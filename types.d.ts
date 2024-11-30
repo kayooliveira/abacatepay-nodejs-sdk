@@ -3,7 +3,7 @@ export type BillingMethods = 'PIX';
 export type BillingKind = 'ONE_TIME';
 
 export type IBilling = {
-  _id: string;
+  id: string;
   url: string;
   amount: number;
   status: BillingStatus;
@@ -13,7 +13,7 @@ export type IBilling = {
   frequency: BillingKind;
   nextBilling: string | null;
   customer?: {
-    _id: string;
+    id: string;
     metadata: ICustomerMetadata;
   };
   accountId: string;
