@@ -20,7 +20,9 @@ const billing = abacate.billing.create({
   ],
   returnUrl: "https://yoursite.com/app",
   completionUrl: "https://yoursite.com/pagamento/sucesso",
-  automaticTaxReceipt: true
+  customer: {
+    email: 'email@example.com'
+  }
 });
 
 console.log(billing)
@@ -34,6 +36,12 @@ console.log(billing)
   methods: ['PIX'],
   frequency: 'ONE_TIME',
   nextBilling: null,
+  customer: {
+    id: 'cust_12345',
+    metadata: {
+      email: 'email@example.com'
+    }
+  },
   createdAt: '2024-11-04T18:38:28.573',
   updatedAt: '2024-11-04T18:38:28.573',
 }
