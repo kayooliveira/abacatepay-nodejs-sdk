@@ -1,4 +1,4 @@
-# AbacatePay NodeJS SDK
+# abacatepay-nodejs-sdk
 
 Official NodeJS SDK for AbacatePay - Accept payments in seconds with a simple integration.
 
