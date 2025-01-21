@@ -11,7 +11,7 @@ npm install abacatepay-nodejs-sdk
 ## Quick Start
 
 ```js
-import AbacatePay from 'abacatepay';
+import AbacatePay from 'abacatepay-nodejs-sdk';
 
 // Initialize the SDK with your API key
 const abacate = AbacatePay('your_api_key');
