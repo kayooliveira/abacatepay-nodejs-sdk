@@ -1,13 +1,29 @@
 # abacatepay-nodejs-sdk
-AbacatePay NodeJS SDK for you to start receiving payments in seconds
 
-## Example
+Official NodeJS SDK for AbacatePay - Accept payments in seconds with a simple integration.
+
+## Installation
+
+```bash
+npm install abacatepay-nodejs-sdk
+```
+
+## Quick Start
+
 ```js
-import AbacatePay from 'abacatepay';
+import AbacatePay from 'abacatepay-nodejs-sdk';
 
-const abacate = AbacatePay('{{ key }}');
+// Initialize the SDK with your API key
+const abacate = AbacatePay('your_api_key');
+```
 
-const billing = abacate.billing.create({
+## Usage
+
+### Creating a Payment
+
+```js
+// Create a one-time payment
+const billing = await abacate.billing.create({
   frequency: "ONE_TIME",
   methods: ["PIX"],
   products: [
@@ -15,21 +31,23 @@ const billing = abacate.billing.create({
       externalId: "PRO-PLAN",
       name: "Pro plan",
       quantity: 1,
-      price: 1000
+      price: 1000 // Amount in cents
     }
   ],
   returnUrl: "https://yoursite.com/app",
   completionUrl: "https://yoursite.com/pagamento/sucesso",
   customer: {
-    email: 'email@example.com'
+    email: 'customer@example.com'
   }
 });
+```
 
-console.log(billing)
-/* Returns:
+### Response
+
+```js
 {
   _id: 'bill_12345667',
-  url: 'https://abacatepay.com/pay/bill_12345667',
+  url: 'https://abacatepay.com/pay/bill_12345667', // Payment URL for your customer
   amount: 1000,
   status: 'PENDING',
   devMode: true,
@@ -39,11 +57,20 @@ console.log(billing)
   customer: {
     id: 'cust_12345',
     metadata: {
-      email: 'email@example.com'
+      email: 'customer@example.com'
     }
   },
   createdAt: '2024-11-04T18:38:28.573',
   updatedAt: '2024-11-04T18:38:28.573',
 }
-*/
 ```
+
+## Payment Methods
+
+Currently supported payment methods:
+- PIX (Instant Brazilian payment system)
+
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
