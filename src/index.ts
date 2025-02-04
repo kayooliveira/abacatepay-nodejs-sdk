@@ -14,24 +14,52 @@ export default function AbacatePay(apiKey: string) {
   const request = createRequest(apiKey);
 
   return {
+    /**
+     * Gerencie suas cobranças.
+     */
     billing: {
+      /**
+       * Permite que você crie um link de cobrança pro seu cliente pagar você.
+       *
+       * @param data Dados da cobrança
+       * @returns Dados da cobrança criada ou erro
+       */
       create(data: CreateBillingData): Promise<CreateBillingResponse> {
         return request('/billing/create', {
           method: 'POST',
           body: JSON.stringify(data),
         });
       },
+      /**
+       * Permite que você recupere uma lista de todas as cobranças criadas.
+       *
+       * @returns Lista de cobranças criadas ou erro
+       */
       list(): Promise<ListBillingResponse> {
         return request('/billing/list', { method: 'GET' });
       },
     },
+    /**
+     * Gerencie seus clientes, aqueles que pagam você.
+     */
     customer: {
+      /**
+       * Permite que você crie um novo cliente para a sua loja.
+       *
+       * @param data Dados do cliente
+       * @returns Dados do cliente criado ou erro
+       */
       create(data: CreateCustomerData): Promise<CreateCustomerResponse> {
         return request('/customer/create', {
           method: 'POST',
           body: JSON.stringify(data),
         });
       },
+      /**
+       * Permite que você recupere uma lista de todos os seus clientes.
+       *
+       * @returns Lista de clientes ou erro
+       */
       list(): Promise<ListCustomerResponse> {
         return request('/customer/list', { method: 'GET' });
       },
