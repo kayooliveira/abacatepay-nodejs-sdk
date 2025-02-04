@@ -1,5 +1,11 @@
 # abacatepay-nodejs-sdk
 
+## 1.1.1
+
+### Patch Changes
+
+- c0b777f: Add JSDoc comments for improved documentation
+
 ## 1.1.0
 
 ### Minor Changes
